@@ -1,0 +1,16 @@
+version: '3.7'
+
+services:
+    # Backend Server
+    backend-server:
+        container_name: server
+        build:
+            context: .
+            dockerfile: Dockerfile.dev
+        volumes:
+            - /usr/src/server/node_modules
+            - .:/usr/src/server
+        ports:
+            - '5000:5000'
+        environment:
+            - NODE_ENV=development
