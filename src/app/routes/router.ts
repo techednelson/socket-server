@@ -9,7 +9,7 @@ router.get('/messages', (req: Request, res: Response) => {
 	});
 });
 
-router.post('/messages:id', (req: Request, res: Response) => {
+router.post('/messages/:id', (req: Request, res: Response) => {
 	const message = req.body.message;
 	const sender = req.body.sender;
 	const id = req.params.id;
