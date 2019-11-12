@@ -15,6 +15,7 @@ export default class Server {
 		this.port = SERVER_PORT;
 		this.httpServer = new http.Server(this.app);
 		this.socketIO = socketIO(this.httpServer);
+		this.listenToSockets();
 	}
 
 	public static getInstance(): Server {
