@@ -31,7 +31,8 @@ export default class Server {
         console.log('Listening to connections - sockets');
         this.socketIO.on('connection', client => {
             console.log('Client connected');
-            socket.disconnect(client);
+            socket.showClientDisconnected(client);
+            socket.receiveMessageFromClient(client);
         });
     }
 }
