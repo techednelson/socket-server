@@ -32,7 +32,7 @@ export default class Server {
         this.socketIO.on('connection', client => {
             console.log('Client connected');
             socket.showClientDisconnected(client);
-            socket.receiveMessageFromClient(client);
+            socket.receiveMessageFromClient(client, this.socketIO);
         });
     }
 }

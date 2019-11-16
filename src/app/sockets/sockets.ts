@@ -1,5 +1,6 @@
 import { Socket } from "socket.io";
-import { Payload } from '../interfaces/interfaces';
+import { Message } from '../interfaces/interfaces';
+import socketIO from 'socket.io';
 
 export const showClientDisconnected = (client: Socket): void => {
     client.on('disconnect', () => {
@@ -7,8 +8,9 @@ export const showClientDisconnected = (client: Socket): void => {
     });
 };
 
-export const receiveMessageFromClient = (client: Socket): void => {
-    client.on('message', (payload: Payload): void => {
-        console.log('Received message', payload);
+export const receiveMessageFromClient = (client: Socket, socketIO: socketIO.Server): void => {
+    client.on('message', (message: Message): void => {
+        console.log('Received message', message);
+        socketIO.emit('reply', message);
     });
 };
